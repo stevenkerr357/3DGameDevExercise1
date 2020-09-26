@@ -7,12 +7,15 @@ public class DoorScript : MonoBehaviour
 {
 
     Animator animator;
+    public GameObject canvas = null;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject door = GameObject.Find("01_low");
         animator = door.GetComponent<Animator>();
+        canvas = GameObject.Find("HomeCanvas");
+        canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,6 +27,8 @@ public class DoorScript : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         animator.SetTrigger("OpenDoor");
+        canvas.SetActive(true);
+        
     }
 
     public void OnTriggerExit(Collider other)
